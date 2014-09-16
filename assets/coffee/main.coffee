@@ -171,5 +171,17 @@ generate = ->
       r.appendChild c
       
     results.appendChild r
+
+bind = ->
+  document.body.addEventListener 'click', toggleDoneState, false
+  document.body.addEventListener 'touchstart', toggleDoneState, false
+
+toggleDoneState = (event) ->
+  el = event.target
+  el.classList.toggle 'done'
   
-document.addEventListener 'DOMContentLoaded', generate, false
+render = ->
+  generate()
+  bind()
+  
+document.addEventListener 'DOMContentLoaded', render, false

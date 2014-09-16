@@ -1,5 +1,5 @@
 (function() {
-  var board, colIndex, column, data, drink, drinks, freeDrink, generate, getDrink, locationOdds, row, rowIndex, shuffle, shuffled, toughOdds, _i, _j, _len, _len1;
+  var bind, board, colIndex, column, data, drink, drinks, freeDrink, generate, getDrink, locationOdds, render, row, rowIndex, shuffle, shuffled, toggleDoneState, toughOdds, _i, _j, _len, _len1;
 
   locationOdds = 1 / 2.1;
 
@@ -190,6 +190,22 @@
     return _results;
   };
 
-  document.addEventListener('DOMContentLoaded', generate, false);
+  bind = function() {
+    document.body.addEventListener('click', toggleDoneState, false);
+    return document.body.addEventListener('touchstart', toggleDoneState, false);
+  };
+
+  toggleDoneState = function(event) {
+    var el;
+    el = event.target;
+    return el.classList.toggle('done');
+  };
+
+  render = function() {
+    generate();
+    return bind();
+  };
+
+  document.addEventListener('DOMContentLoaded', render, false);
 
 }).call(this);
