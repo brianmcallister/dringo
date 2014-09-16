@@ -1,0 +1,46 @@
+// Global layout.
+html {
+  * {
+    @include box-sizing(border-box);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  @include display(flex);
+  @include align-items(stretch);
+  @include flex-direction(row);
+  @include justify-content(flex-start);
+    
+  overflow: hidden;
+  border: 1px solid #ccc;
+  
+  &:first-child {
+    border-top: 1px solid #ccc;
+  }
+  
+  & + .row {
+    border-top: 0;
+  }
+}
+
+.column {
+  @include flex(1);
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+
+  padding: 5px;
+  font-size: 9px;
+  text-align: center;
+  
+  border-left: 1px solid #ccc;
+  
+  &:first-child {
+    border-left: 0;
+  }
+}
